@@ -86,11 +86,12 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
             {
                 EdgeAgentOptions options = new EdgeAgentOptions()
                 {
-                    HostName = txtHostName.Text.Trim(),
-                    Port = Convert.ToInt32( txtPort.Text.Trim() ),
-                    Username = txtUserName.Text.Trim(),
-                    Password = txtPassword.Text.Trim(),
-                    ProtocolType = Protocol.TCP,
+                    DCCS = new DCCSOptions()
+                    {
+                        CredentialKey = txtDCCSKey.Text.Trim(),
+                        APIUrl = txtDCCSAPIUrl.Text.Trim()
+                    },
+
                     UseSecure = ckbSecure.Checked,
                     AutoReconnect = true,
                     ReconnectInterval = 1000,
@@ -201,7 +202,7 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                 }
                 data.DeviceList.Add( device );
             }
-            data.Timestamp = DateTime.UtcNow;
+            data.Timestamp = DateTime.Now;
 
             return data;
         }
