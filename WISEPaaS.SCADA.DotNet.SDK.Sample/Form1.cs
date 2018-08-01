@@ -92,11 +92,12 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                         APIUrl = txtDCCSAPIUrl.Text.Trim()
                     },
 
-                    UseSecure = ckbSecure.Checked,
                     AutoReconnect = true,
                     ReconnectInterval = 1000,
                     ScadaId = txtScadaId.Text.Trim(),
-                    Heartbeat = 60000   // default is 60 seconds
+                    Heartbeat = 60000,   // default is 60 seconds
+                    DataRecover = true,
+                    UseSecure = ckbSecure.Checked
                 };
 
                 _edgeAgent = new EdgeAgent( options );
@@ -104,6 +105,17 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                 _edgeAgent.Connected += _edgeAgent_Connected;
                 _edgeAgent.Disconnected += _edgeAgent_Disconnected;
                 _edgeAgent.MessageReceived += _edgeAgent_MessageReceived;
+            }
+            else
+            {
+                _edgeAgent.Options.ScadaId = txtScadaId.Text.Trim();
+                _edgeAgent.Options.UseSecure = ckbSecure.Checked;
+
+                _edgeAgent.Options.DCCS = new DCCSOptions()
+                {
+                    CredentialKey = txtDCCSKey.Text.Trim(),
+                    APIUrl = txtDCCSAPIUrl.Text.Trim()
+                };
             }
 
             _edgeAgent.Connect();
@@ -179,27 +191,36 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                     TagList = new List<EdgeData.Tag>()
                 };
 
-                for ( int j = 1; j <= numTagCount.Value; j++ )
+                for ( int j = 1; j <= numATagCount.Value; j++ )
                 {
                     EdgeData.Tag aTag = new EdgeData.Tag()
                     {
                         Name = "ATag" + j,
                         Value = Math.Round( random.NextDouble(), 2 )
                     };
+                    device.TagList.Add( aTag );
+                }
+
+                for ( int j = 1; j <= numDTagCount.Value; j++ )
+                {
                     EdgeData.Tag dTag = new EdgeData.Tag()
                     {
                         Name = "DTag" + j,
                         Value = j % 2
                     };
+                    device.TagList.Add( dTag );
+                }
+
+                for ( int j = 1; j <= numTTagCount.Value; j++ )
+                {
                     EdgeData.Tag tTag = new EdgeData.Tag()
                     {
                         Name = "TTag" + j,
                         Value = "TEST " + j.ToString()
                     };
-                    device.TagList.Add( aTag );
-                    device.TagList.Add( dTag );
                     device.TagList.Add( tTag );
                 }
+
                 data.DeviceList.Add( device );
             }
             data.Timestamp = DateTime.Now;
@@ -235,7 +256,7 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                 device.DiscreteTagList = new List<EdgeConfig.DiscreteTagConfig>();
                 device.TextTagList = new List<EdgeConfig.TextTagConfig>();
 
-                for ( int j = 1; j <= numTagCount.Value; j++ )
+                for ( int j = 1; j <= numATagCount.Value; j++ )
                 {
                     EdgeConfig.AnalogTagConfig analogTag = new EdgeConfig.AnalogTagConfig()
                     {
@@ -258,6 +279,11 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                         LLPriority = 0,
                         LLAlarmLimit = 0
                     };
+                    device.AnalogTagList.Add( analogTag );
+                }
+
+                for ( int j = 1; j <= numDTagCount.Value; j++ )
+                {
                     EdgeConfig.DiscreteTagConfig discreteTag = new EdgeConfig.DiscreteTagConfig()
                     {
                         Name = "DTag" + j,
@@ -282,6 +308,11 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                         State6AlarmPriority = 0,
                         State7AlarmPriority = 0
                     };
+                    device.DiscreteTagList.Add( discreteTag );
+                }
+
+                for ( int j = 1; j <= numTTagCount.Value; j++ )
+                {
                     EdgeConfig.TextTagConfig textTag = new EdgeConfig.TextTagConfig()
                     {
                         Name = "TTag" + j,
@@ -291,8 +322,6 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                         AlarmStatus = false
                     };
 
-                    device.AnalogTagList.Add( analogTag );
-                    device.DiscreteTagList.Add( discreteTag );
                     device.TextTagList.Add( textTag );
                 }
 
@@ -328,7 +357,7 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                 device.DiscreteTagList = new List<EdgeConfig.DiscreteTagConfig>();
                 device.TextTagList = new List<EdgeConfig.TextTagConfig>();
 
-                for ( int j = 1; j <= numTagCount.Value; j++ )
+                for ( int j = 1; j <= numATagCount.Value; j++ )
                 {
                     EdgeConfig.AnalogTagConfig analogTag = new EdgeConfig.AnalogTagConfig()
                     {
@@ -351,6 +380,10 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                         LLPriority = 0,
                         LLAlarmLimit = 0*/
                     };
+                    device.AnalogTagList.Add( analogTag );
+                }
+                for ( int j = 1; j <= numDTagCount.Value; j++ )
+                {
                     EdgeConfig.DiscreteTagConfig discreteTag = new EdgeConfig.DiscreteTagConfig()
                     {
                         Name = "DTag" + j,
@@ -375,6 +408,10 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                         State6AlarmPriority = 0,*/
                         State7AlarmPriority = 0
                     };
+                    device.DiscreteTagList.Add( discreteTag );
+                }
+                for ( int j = 1; j <= numTTagCount.Value; j++ )
+                {
                     EdgeConfig.TextTagConfig textTag = new EdgeConfig.TextTagConfig()
                     {
                         Name = "TTag" + j,
@@ -383,9 +420,6 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                         /*ArraySize = 0,
                         AlarmStatus = false*/
                     };
-
-                    device.AnalogTagList.Add( analogTag );
-                    device.DiscreteTagList.Add( discreteTag );
                     device.TextTagList.Add( textTag );
                 }
 
@@ -456,23 +490,28 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                 device.AnalogTagList = new List<EdgeConfig.AnalogTagConfig>();
                 device.DiscreteTagList = new List<EdgeConfig.DiscreteTagConfig>();
                 device.TextTagList = new List<EdgeConfig.TextTagConfig>();
-                for ( int j = 1; j <= numTagCount.Value; j++ )
+                for ( int j = 1; j <= numATagCount.Value; j++ )
                 {
                     EdgeConfig.AnalogTagConfig analogTag = new EdgeConfig.AnalogTagConfig()
                     {
                         Name = "ATag" + j
                     };
+                    device.AnalogTagList.Add( analogTag );
+                }
+                for ( int j = 1; j <= numDTagCount.Value; j++ )
+                {
                     EdgeConfig.DiscreteTagConfig discreteTag = new EdgeConfig.DiscreteTagConfig()
                     {
                         Name = "DTag" + j
                     };
+                    device.DiscreteTagList.Add( discreteTag );
+                }
+                for ( int j = 1; j <= numTTagCount.Value; j++ )
+                {
                     EdgeConfig.TextTagConfig textTag = new EdgeConfig.TextTagConfig()
                     {
                         Name = "TTag" + j
                     };
-
-                    device.AnalogTagList.Add( analogTag );
-                    device.DiscreteTagList.Add( discreteTag );
                     device.TextTagList.Add( textTag );
                 }
 
