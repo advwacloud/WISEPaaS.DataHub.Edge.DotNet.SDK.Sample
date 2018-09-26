@@ -25,27 +25,25 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
             switch ( e.Type )
             {
                 case MessageType.WriteValue:
-                    WriteValueCommandMessage wvCmdMsg = ( WriteValueCommandMessage ) e.Message;
-                    foreach ( var item in wvCmdMsg.D.Val )
+                    WriteValueCommand wvcMsg = ( WriteValueCommand ) e.Message;
+                    foreach ( var device in wvcMsg.DeviceList )
                     {
-                        Console.Write( "Tag: {0}, ", item.Key );
-                        Console.WriteLine( "Value: {0}", item.Value );
+                        Console.WriteLine( "DeviceId: {0}", device.Id );
+                        foreach ( var tag in device.TagList )
+                        {
+                            Console.WriteLine( "TagName: {0}, Value: {1}", tag.Name, tag.Value.ToString() );
+                        }
                     }
                     break;
                 /*case MessageType.WriteConfig:
                     break;*/
-                case MessageType.DataOn:
-                    DataOnCommandMessage dataOnMsg = ( DataOnCommandMessage ) e.Message;
-                    EdgeData data = prepareData();
-                    bool result = _edgeAgent.SendData( data ).Result;
-                    break;
-                case MessageType.DataOff:
-                    DataOffCommandMessage dataOffMsg = ( DataOffCommandMessage ) e.Message;
-                    timer1.Enabled = false;
+                case MessageType.TimeSync:  // when received this message
+                    TimeSyncCommand tscMsg = ( TimeSyncCommand ) e.Message;
+                    Console.WriteLine( "UTC Time: {0}", tscMsg.UTCTime.ToString() );
                     break;
                 case MessageType.ConfigAck:
-                    ConfigAckMessage cfgAckMsg = ( ConfigAckMessage ) e.Message;
-                    MessageBox.Show( string.Format( "Upload Config Result: {0}", cfgAckMsg.D.Cfg.ToString() ) );
+                    ConfigAck cfgAckMsg = ( ConfigAck ) e.Message;
+                    MessageBox.Show( string.Format( "Upload Config Result: {0}", cfgAckMsg.Result.ToString() ) );
                     break;
             }
         }
@@ -185,43 +183,36 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
             EdgeData data = new EdgeData();
             for ( int i = 1; i <= numDeviceCount.Value; i++ )
             {
-                EdgeData.Device device = new EdgeData.Device()
-                {
-                    Id = "Device" + i,
-                    TagList = new List<EdgeData.Tag>()
-                };
-
                 for ( int j = 1; j <= numATagCount.Value; j++ )
                 {
                     EdgeData.Tag aTag = new EdgeData.Tag()
                     {
-                        Name = "ATag" + j,
-                        Value = Math.Round( random.NextDouble(), 2 )
+                        DeviceId = "Device" + i,
+                        TagName = "ATag" + j,
+                        Value = random.Next( 100 )
                     };
-                    device.TagList.Add( aTag );
+                    data.TagList.Add( aTag );
                 }
-
                 for ( int j = 1; j <= numDTagCount.Value; j++ )
                 {
                     EdgeData.Tag dTag = new EdgeData.Tag()
                     {
-                        Name = "DTag" + j,
+                        DeviceId = "Device" + i,
+                        TagName = "DTag" + j,
                         Value = j % 2
                     };
-                    device.TagList.Add( dTag );
+                    data.TagList.Add( dTag );
                 }
-
                 for ( int j = 1; j <= numTTagCount.Value; j++ )
                 {
                     EdgeData.Tag tTag = new EdgeData.Tag()
                     {
-                        Name = "TTag" + j,
+                        DeviceId = "Device" + i,
+                        TagName = "TTag" + j,
                         Value = "TEST " + j.ToString()
                     };
-                    device.TagList.Add( tTag );
+                    data.TagList.Add( tTag );
                 }
-
-                data.DeviceList.Add( device );
             }
             data.Timestamp = DateTime.Now;
 
