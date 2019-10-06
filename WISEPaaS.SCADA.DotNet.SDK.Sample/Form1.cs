@@ -32,6 +32,16 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample
                         foreach ( var tag in device.TagList )
                         {
                             Console.WriteLine( "TagName: {0}, Value: {1}", tag.Name, tag.Value.ToString() );
+                            if ( device.Id == "Device1" && tag.Name == "DTag1" )
+                            {
+                                if ( this.txtDTag1Value.InvokeRequired )
+                                {
+                                    BeginInvoke( ( MethodInvoker ) delegate()
+                                    {
+                                        txtDTag1Value.Text = tag.Value.ToString();
+                                    } );
+                                }
+                            }
                         }
                     }
                     break;

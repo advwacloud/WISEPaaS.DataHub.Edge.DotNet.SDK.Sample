@@ -46,21 +46,23 @@
             this.btnUploadConfig = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.numTTagCount = new System.Windows.Forms.NumericUpDown();
+            this.lblTTagCount = new System.Windows.Forms.Label();
+            this.numDTagCount = new System.Windows.Forms.NumericUpDown();
+            this.lblDTagCount = new System.Windows.Forms.Label();
             this.lblDCCSKey = new System.Windows.Forms.Label();
             this.txtDCCSKey = new System.Windows.Forms.TextBox();
             this.lblDCCSAPIUrl = new System.Windows.Forms.Label();
             this.txtDCCSAPIUrl = new System.Windows.Forms.TextBox();
             this.txtScadaId = new System.Windows.Forms.TextBox();
             this.lblScadaId = new System.Windows.Forms.Label();
-            this.numDTagCount = new System.Windows.Forms.NumericUpDown();
-            this.lblDTagCount = new System.Windows.Forms.Label();
-            this.numTTagCount = new System.Windows.Forms.NumericUpDown();
-            this.lblTTagCount = new System.Windows.Forms.Label();
+            this.txtDTag1Value = new System.Windows.Forms.Label();
+            this.lblDTag1Value = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numATagCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDeviceCount)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numDTagCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTTagCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDTagCount)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -261,6 +263,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblDTag1Value);
+            this.groupBox2.Controls.Add(this.txtDTag1Value);
             this.groupBox2.Controls.Add(this.numTTagCount);
             this.groupBox2.Controls.Add(this.lblTTagCount);
             this.groupBox2.Controls.Add(this.numDTagCount);
@@ -293,6 +297,64 @@
             this.groupBox2.Size = new System.Drawing.Size(822, 443);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
+            // 
+            // numTTagCount
+            // 
+            this.numTTagCount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.numTTagCount.Location = new System.Drawing.Point(188, 388);
+            this.numTTagCount.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numTTagCount.Name = "numTTagCount";
+            this.numTTagCount.Size = new System.Drawing.Size(120, 29);
+            this.numTTagCount.TabIndex = 44;
+            this.numTTagCount.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // lblTTagCount
+            // 
+            this.lblTTagCount.AutoSize = true;
+            this.lblTTagCount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblTTagCount.Location = new System.Drawing.Point(185, 365);
+            this.lblTTagCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTTagCount.Name = "lblTTagCount";
+            this.lblTTagCount.Size = new System.Drawing.Size(124, 20);
+            this.lblTTagCount.TabIndex = 43;
+            this.lblTTagCount.Text = "Text Tag Count";
+            // 
+            // numDTagCount
+            // 
+            this.numDTagCount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.numDTagCount.Location = new System.Drawing.Point(188, 333);
+            this.numDTagCount.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numDTagCount.Name = "numDTagCount";
+            this.numDTagCount.Size = new System.Drawing.Size(120, 29);
+            this.numDTagCount.TabIndex = 42;
+            this.numDTagCount.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // lblDTagCount
+            // 
+            this.lblDTagCount.AutoSize = true;
+            this.lblDTagCount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblDTagCount.Location = new System.Drawing.Point(185, 310);
+            this.lblDTagCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDTagCount.Name = "lblDTagCount";
+            this.lblDTagCount.Size = new System.Drawing.Size(153, 20);
+            this.lblDTagCount.TabIndex = 41;
+            this.lblDTagCount.Text = "Discrete Tag Count";
             // 
             // lblDCCSKey
             // 
@@ -350,63 +412,29 @@
             this.lblScadaId.TabIndex = 14;
             this.lblScadaId.Text = "SCADA ID";
             // 
-            // numDTagCount
+            // txtDTag1Value
             // 
-            this.numDTagCount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.numDTagCount.Location = new System.Drawing.Point(188, 333);
-            this.numDTagCount.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.numDTagCount.Name = "numDTagCount";
-            this.numDTagCount.Size = new System.Drawing.Size(120, 29);
-            this.numDTagCount.TabIndex = 42;
-            this.numDTagCount.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
+            this.txtDTag1Value.BackColor = System.Drawing.SystemColors.Control;
+            this.txtDTag1Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDTag1Value.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtDTag1Value.Location = new System.Drawing.Point(477, 333);
+            this.txtDTag1Value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txtDTag1Value.Name = "txtDTag1Value";
+            this.txtDTag1Value.Size = new System.Drawing.Size(76, 52);
+            this.txtDTag1Value.TabIndex = 45;
+            this.txtDTag1Value.Text = "1";
+            this.txtDTag1Value.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblDTagCount
+            // lblDTag1Value
             // 
-            this.lblDTagCount.AutoSize = true;
-            this.lblDTagCount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblDTagCount.Location = new System.Drawing.Point(185, 310);
-            this.lblDTagCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDTagCount.Name = "lblDTagCount";
-            this.lblDTagCount.Size = new System.Drawing.Size(153, 20);
-            this.lblDTagCount.TabIndex = 41;
-            this.lblDTagCount.Text = "Discrete Tag Count";
-            // 
-            // numTTagCount
-            // 
-            this.numTTagCount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.numTTagCount.Location = new System.Drawing.Point(188, 388);
-            this.numTTagCount.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.numTTagCount.Name = "numTTagCount";
-            this.numTTagCount.Size = new System.Drawing.Size(120, 29);
-            this.numTTagCount.TabIndex = 44;
-            this.numTTagCount.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // lblTTagCount
-            // 
-            this.lblTTagCount.AutoSize = true;
-            this.lblTTagCount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblTTagCount.Location = new System.Drawing.Point(185, 365);
-            this.lblTTagCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTTagCount.Name = "lblTTagCount";
-            this.lblTTagCount.Size = new System.Drawing.Size(124, 20);
-            this.lblTTagCount.TabIndex = 43;
-            this.lblTTagCount.Text = "Text Tag Count";
+            this.lblDTag1Value.AutoSize = true;
+            this.lblDTag1Value.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblDTag1Value.Location = new System.Drawing.Point(360, 348);
+            this.lblDTag1Value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDTag1Value.Name = "lblDTag1Value";
+            this.lblDTag1Value.Size = new System.Drawing.Size(109, 20);
+            this.lblDTag1Value.TabIndex = 46;
+            this.lblDTag1Value.Text = "DTag1 Value:";
             // 
             // Form1
             // 
@@ -420,8 +448,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numDeviceCount)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numDTagCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTTagCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDTagCount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -455,6 +483,8 @@
         private System.Windows.Forms.Label lblDTagCount;
         private System.Windows.Forms.TextBox txtScadaId;
         private System.Windows.Forms.Label lblScadaId;
+        private System.Windows.Forms.Label lblDTag1Value;
+        private System.Windows.Forms.Label txtDTag1Value;
     }
 }
 
