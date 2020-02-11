@@ -1,4 +1,4 @@
-﻿namespace WISEPaaS.SCADA.DotNet.SDK.Sample
+﻿namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
 {
     partial class Form1
     {
@@ -46,6 +46,8 @@
             this.btnUploadConfig = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblDTag1Value = new System.Windows.Forms.Label();
+            this.txtDTag1Value = new System.Windows.Forms.Label();
             this.numTTagCount = new System.Windows.Forms.NumericUpDown();
             this.lblTTagCount = new System.Windows.Forms.Label();
             this.numDTagCount = new System.Windows.Forms.NumericUpDown();
@@ -54,10 +56,8 @@
             this.txtDCCSKey = new System.Windows.Forms.TextBox();
             this.lblDCCSAPIUrl = new System.Windows.Forms.Label();
             this.txtDCCSAPIUrl = new System.Windows.Forms.TextBox();
-            this.txtScadaId = new System.Windows.Forms.TextBox();
-            this.lblScadaId = new System.Windows.Forms.Label();
-            this.txtDTag1Value = new System.Windows.Forms.Label();
-            this.lblDTag1Value = new System.Windows.Forms.Label();
+            this.txtNodeId = new System.Windows.Forms.TextBox();
+            this.lblNodeId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numATagCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDeviceCount)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -287,8 +287,8 @@
             this.groupBox2.Controls.Add(this.numDeviceCount);
             this.groupBox2.Controls.Add(this.lblDeviceCount);
             this.groupBox2.Controls.Add(this.btnUploadConfig);
-            this.groupBox2.Controls.Add(this.txtScadaId);
-            this.groupBox2.Controls.Add(this.lblScadaId);
+            this.groupBox2.Controls.Add(this.txtNodeId);
+            this.groupBox2.Controls.Add(this.lblNodeId);
             this.groupBox2.Controls.Add(this.btnConnect);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -297,6 +297,30 @@
             this.groupBox2.Size = new System.Drawing.Size(822, 443);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
+            // 
+            // lblDTag1Value
+            // 
+            this.lblDTag1Value.AutoSize = true;
+            this.lblDTag1Value.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblDTag1Value.Location = new System.Drawing.Point(360, 348);
+            this.lblDTag1Value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDTag1Value.Name = "lblDTag1Value";
+            this.lblDTag1Value.Size = new System.Drawing.Size(109, 20);
+            this.lblDTag1Value.TabIndex = 46;
+            this.lblDTag1Value.Text = "DTag1 Value:";
+            // 
+            // txtDTag1Value
+            // 
+            this.txtDTag1Value.BackColor = System.Drawing.SystemColors.Control;
+            this.txtDTag1Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDTag1Value.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtDTag1Value.Location = new System.Drawing.Point(477, 333);
+            this.txtDTag1Value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txtDTag1Value.Name = "txtDTag1Value";
+            this.txtDTag1Value.Size = new System.Drawing.Size(76, 52);
+            this.txtDTag1Value.TabIndex = 45;
+            this.txtDTag1Value.Text = "1";
+            this.txtDTag1Value.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numTTagCount
             // 
@@ -392,49 +416,25 @@
             this.txtDCCSAPIUrl.Size = new System.Drawing.Size(308, 29);
             this.txtDCCSAPIUrl.TabIndex = 40;
             // 
-            // txtScadaId
+            // txtNodeId
             // 
-            this.txtScadaId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtScadaId.Location = new System.Drawing.Point(14, 51);
-            this.txtScadaId.Margin = new System.Windows.Forms.Padding(4);
-            this.txtScadaId.Name = "txtScadaId";
-            this.txtScadaId.Size = new System.Drawing.Size(309, 29);
-            this.txtScadaId.TabIndex = 15;
+            this.txtNodeId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtNodeId.Location = new System.Drawing.Point(14, 51);
+            this.txtNodeId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNodeId.Name = "txtNodeId";
+            this.txtNodeId.Size = new System.Drawing.Size(309, 29);
+            this.txtNodeId.TabIndex = 15;
             // 
-            // lblScadaId
+            // lblNodeId
             // 
-            this.lblScadaId.AutoSize = true;
-            this.lblScadaId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblScadaId.Location = new System.Drawing.Point(13, 27);
-            this.lblScadaId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblScadaId.Name = "lblScadaId";
-            this.lblScadaId.Size = new System.Drawing.Size(84, 20);
-            this.lblScadaId.TabIndex = 14;
-            this.lblScadaId.Text = "SCADA ID";
-            // 
-            // txtDTag1Value
-            // 
-            this.txtDTag1Value.BackColor = System.Drawing.SystemColors.Control;
-            this.txtDTag1Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDTag1Value.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtDTag1Value.Location = new System.Drawing.Point(477, 333);
-            this.txtDTag1Value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.txtDTag1Value.Name = "txtDTag1Value";
-            this.txtDTag1Value.Size = new System.Drawing.Size(76, 52);
-            this.txtDTag1Value.TabIndex = 45;
-            this.txtDTag1Value.Text = "1";
-            this.txtDTag1Value.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDTag1Value
-            // 
-            this.lblDTag1Value.AutoSize = true;
-            this.lblDTag1Value.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblDTag1Value.Location = new System.Drawing.Point(360, 348);
-            this.lblDTag1Value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDTag1Value.Name = "lblDTag1Value";
-            this.lblDTag1Value.Size = new System.Drawing.Size(109, 20);
-            this.lblDTag1Value.TabIndex = 46;
-            this.lblDTag1Value.Text = "DTag1 Value:";
+            this.lblNodeId.AutoSize = true;
+            this.lblNodeId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblNodeId.Location = new System.Drawing.Point(13, 27);
+            this.lblNodeId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNodeId.Name = "lblNodeId";
+            this.lblNodeId.Size = new System.Drawing.Size(72, 20);
+            this.lblNodeId.TabIndex = 14;
+            this.lblNodeId.Text = "Node ID";
             // 
             // Form1
             // 
@@ -481,8 +481,8 @@
         private System.Windows.Forms.Label lblTTagCount;
         private System.Windows.Forms.NumericUpDown numDTagCount;
         private System.Windows.Forms.Label lblDTagCount;
-        private System.Windows.Forms.TextBox txtScadaId;
-        private System.Windows.Forms.Label lblScadaId;
+        private System.Windows.Forms.TextBox txtNodeId;
+        private System.Windows.Forms.Label lblNodeId;
         private System.Windows.Forms.Label lblDTag1Value;
         private System.Windows.Forms.Label txtDTag1Value;
     }

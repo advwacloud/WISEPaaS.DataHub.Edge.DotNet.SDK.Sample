@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WISEPaaS.SCADA.DotNet.SDK.Sample.Properties {
+namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WISEPaaS.SCADA.DotNet.SDK.Sample.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WISEPaaS.SCADA.DotNet.SDK.Sample.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WISEPaaS.DataHub.Edge.DotNet.SDK.Sample.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

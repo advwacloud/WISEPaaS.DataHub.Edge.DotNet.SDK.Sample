@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WISEPaaS.SCADA.DotNet.SDK.Sample.Properties {
+namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

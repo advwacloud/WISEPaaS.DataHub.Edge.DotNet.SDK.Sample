@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace WISEPaaS.SCADA.DotNet.SDK.Sample
+namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
 {
     static class Program
     {
