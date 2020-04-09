@@ -41,6 +41,17 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                                         txtDTag1Value.Text = tag.Value.ToString();
                                     } );
                                 }
+                                // resend the new value to cloud
+                                EdgeData data = new EdgeData();
+                                EdgeData.Tag dTag = new EdgeData.Tag()
+                                {
+                                    DeviceId = "Device1",
+                                    TagName = "DTag1",
+                                    Value = tag.Value
+                                };
+                                data.TagList.Add( dTag );
+                                data.Timestamp = DateTime.Now;
+                                bool result = _edgeAgent.SendData( data ).Result;
                             }
                         }
                     }
