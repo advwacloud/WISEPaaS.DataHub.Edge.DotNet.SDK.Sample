@@ -246,9 +246,7 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                 return;
 
             EdgeConfig config = new EdgeConfig();
-            config.Node = new EdgeConfig.NodeConfig();
-
-            config.Node.DeviceList = new List<EdgeConfig.DeviceConfig>();
+          
             for ( int i = 1; i <= numDeviceCount.Value; i++ )
             {
                 EdgeConfig.DeviceConfig device = new EdgeConfig.DeviceConfig()
@@ -258,11 +256,7 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                     Type = "Smart Device",
                     Description = "Device " + i,
                 };
-
-                device.AnalogTagList = new List<EdgeConfig.AnalogTagConfig>();
-                device.DiscreteTagList = new List<EdgeConfig.DiscreteTagConfig>();
-                device.TextTagList = new List<EdgeConfig.TextTagConfig>();
-
+                
                 for ( int j = 1; j <= numATagCount.Value; j++ )
                 {
                     EdgeConfig.AnalogTagConfig analogTag = new EdgeConfig.AnalogTagConfig()
@@ -325,9 +319,6 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                 return;
 
             EdgeConfig config = new EdgeConfig();
-            config.Node = new EdgeConfig.NodeConfig();
-
-            config.Node.DeviceList = new List<EdgeConfig.DeviceConfig>();
             for ( int i = 1; i <= numDeviceCount.Value; i++ )
             {
                 EdgeConfig.DeviceConfig device = new EdgeConfig.DeviceConfig()
@@ -335,10 +326,6 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                     Id = "Device" + i,
                     Description = "Device " + i,
                 };
-
-                device.AnalogTagList = new List<EdgeConfig.AnalogTagConfig>();
-                device.DiscreteTagList = new List<EdgeConfig.DiscreteTagConfig>();
-                device.TextTagList = new List<EdgeConfig.TextTagConfig>();
 
                 for ( int j = 1; j <= numATagCount.Value; j++ )
                 {
@@ -410,9 +397,6 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                 return;
 
             EdgeConfig config = new EdgeConfig();
-            config.Node = new EdgeConfig.NodeConfig();
-
-            config.Node.DeviceList = new List<EdgeConfig.DeviceConfig>();
             for ( int i = 1; i <= numDeviceCount.Value; i++ )
             {
                 EdgeConfig.DeviceConfig device = new EdgeConfig.DeviceConfig()
@@ -432,19 +416,12 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                 return;
 
             EdgeConfig config = new EdgeConfig();
-            config.Node = new EdgeConfig.NodeConfig();
-
-            config.Node.DeviceList = new List<EdgeConfig.DeviceConfig>();
             for ( int i = 1; i <= numDeviceCount.Value; i++ )
             {
                 EdgeConfig.DeviceConfig device = new EdgeConfig.DeviceConfig()
                 {
                     Id = "Device" + i
                 };
-
-                device.AnalogTagList = new List<EdgeConfig.AnalogTagConfig>();
-                device.DiscreteTagList = new List<EdgeConfig.DiscreteTagConfig>();
-                device.TextTagList = new List<EdgeConfig.TextTagConfig>();
                 for ( int j = 1; j <= numATagCount.Value; j++ )
                 {
                     EdgeConfig.AnalogTagConfig analogTag = new EdgeConfig.AnalogTagConfig()
