@@ -265,7 +265,8 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                         SpanLow = 0,
                         EngineerUnit = string.Empty,
                         IntegerDisplayFormat = 4,
-                        FractionDisplayFormat = 2
+                        FractionDisplayFormat = 2,
+                        SendWhenValueChanged = true
                     };
                     device.AnalogTagList.Add( analogTag );
                 }
@@ -285,7 +286,8 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                         State4 = string.Empty,
                         State5 = string.Empty,
                         State6 = string.Empty,
-                        State7 = string.Empty
+                        State7 = string.Empty,
+                        SendWhenValueChanged = true
                     };
                     device.DiscreteTagList.Add( discreteTag );
                 }
@@ -297,7 +299,8 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                         Name = "TTag" + j,
                         Description = "TTag " + j,
                         ReadOnly = false,
-                        ArraySize = 0
+                        ArraySize = 0,
+                        SendWhenValueChanged = true
                     };
 
                     device.TextTagList.Add( textTag );
