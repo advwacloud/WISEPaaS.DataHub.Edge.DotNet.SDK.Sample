@@ -36,7 +36,7 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                             {
                                 if ( this.txtDTag1Value.InvokeRequired )
                                 {
-                                    BeginInvoke( ( MethodInvoker ) delegate()
+                                    BeginInvoke( ( MethodInvoker ) delegate ()
                                     {
                                         txtDTag1Value.Text = tag.Value.ToString();
                                     } );
@@ -69,7 +69,7 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
         {
             if ( this.lblStatus.InvokeRequired )
             {
-                BeginInvoke( ( MethodInvoker ) delegate()
+                BeginInvoke( ( MethodInvoker ) delegate ()
                 {
                     lblStatus.Text = "DISCONNECTED";
                     lblStatus.BackColor = Color.Silver;
@@ -81,7 +81,7 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
         {
             if ( this.lblStatus.InvokeRequired )
             {
-                BeginInvoke( ( MethodInvoker ) delegate()
+                BeginInvoke( ( MethodInvoker ) delegate ()
                 {
                     lblStatus.Text = "CONNECTED";
                     lblStatus.BackColor = Color.Green;
@@ -242,7 +242,7 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                 return;
 
             EdgeConfig config = new EdgeConfig();
-          
+
             for ( int i = 1; i <= numDeviceCount.Value; i++ )
             {
                 EdgeConfig.DeviceConfig device = new EdgeConfig.DeviceConfig()
@@ -252,7 +252,7 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                     Type = "Smart Device",
                     Description = "Device " + i,
                 };
-                
+
                 for ( int j = 1; j <= numATagCount.Value; j++ )
                 {
                     EdgeConfig.AnalogTagConfig analogTag = new EdgeConfig.AnalogTagConfig()
@@ -450,6 +450,22 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
             }
 
             bool result = _edgeAgent.UploadConfig( ActionType.Delete, config ).Result;
+        }
+
+        private void btnUpdateData_Click( object sender, EventArgs e )
+        {
+            if ( _edgeAgent == null )
+                return;
+
+            EdgeData data = new EdgeData();
+            data.TagList.Add( new EdgeData.Tag()
+            {
+                DeviceId = "Device1",
+                TagName = "ATag1",
+                Value = 2
+            } );
+            data.Timestamp = new DateTime( 2020, 8, 26, 16, 2, 37, 893 );  // local time
+            bool result = _edgeAgent.UpdateData( data ).Result;
         }
     }
 }
