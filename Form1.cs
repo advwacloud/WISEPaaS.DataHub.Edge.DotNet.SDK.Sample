@@ -264,9 +264,8 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                         SpanHigh = 1000,
                         SpanLow = 0,
                         EngineerUnit = string.Empty,
-                        IntegerDisplayFormat = 4,
                         FractionDisplayFormat = 2,
-                        SendWhenValueChanged = true
+                        SendWhenValueChanged = false
                     };
                     device.AnalogTagList.Add( analogTag );
                 }
@@ -287,7 +286,7 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                         State5 = string.Empty,
                         State6 = string.Empty,
                         State7 = string.Empty,
-                        SendWhenValueChanged = true
+                        SendWhenValueChanged = false
                     };
                     device.DiscreteTagList.Add( discreteTag );
                 }
@@ -450,22 +449,6 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
             }
 
             bool result = _edgeAgent.UploadConfig( ActionType.Delete, config ).Result;
-        }
-
-        private void btnUpdateData_Click( object sender, EventArgs e )
-        {
-            if ( _edgeAgent == null )
-                return;
-
-            EdgeData data = new EdgeData();
-            data.TagList.Add( new EdgeData.Tag()
-            {
-                DeviceId = "Device1",
-                TagName = "ATag1",
-                Value = 2
-            } );
-            data.Timestamp = new DateTime( 2020, 8, 26, 16, 2, 37, 893 );  // local time
-            bool result = _edgeAgent.UpdateData( data ).Result;
         }
     }
 }
