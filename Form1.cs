@@ -248,7 +248,7 @@ namespace WISEPaaS.DataHub.Edge.DotNet.SDK.Sample
                 EdgeConfig.DeviceConfig device = new EdgeConfig.DeviceConfig()
                 {
                     Id = "Device" + i,
-                    Name = "Device " + i,
+                    Name = "Device" + i,
                     Type = "Smart Device",
                     Description = "Device " + i,
                 };
